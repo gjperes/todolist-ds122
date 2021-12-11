@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
 
     <title>Login - myTasks</title>
-    <meta name="author" content="Gabriel Jesus Peres, Izael"> <!--ALTERAR O NOME DO IZAEL, COLOCANDO COMPLETO-->
     <meta name="description" content="To Do Online List - A sua lista online!">
     <link rel="shortcut icon" href="images/journal-check.svg" type="image/x-icon">
     
