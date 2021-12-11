@@ -1,21 +1,21 @@
-# (Atividade) TODO LIST - Desenvolvimento Web I
+# CRUD Program - To Do List
 
-Disclaimer: Academic project, created for educational purposes.
+***Atividade - Desenvolvimento Web I***
 
+Disclaimer: This is an academic project, created for educational purposes.
+
+
+## Implementar
 ***
 
-## Still in progress
-
-Checklist:
-
-***
-
-## Initial Concept
-
-Login -> Tela do TodoList
+- Tela de Cadastro (Registre-se)
+- Sistema de Banco de Dados
+- Implementar o uso de cookies e Sessions
+- Refatorar o myTasks (parte funcional)
 
 ***
 
 ### Colaboradores:
 - Gabriel
 - Izael
+- Rafael
