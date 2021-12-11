@@ -1,0 +1,25 @@
+body {
+  background-color: #f5f5f5;
+}
+
+.alert a:hover {
+    text-decoration: none;
+}
+
+.alert .tarefa {
+  font-size: 1.3em;
+}
+
+h3.panel-title {
+  font-weight: bold;
+}
+
+.panel-default > .panel-heading {
+  background-color: black;
+  color: white;
+}
+
+#edit-help {
+  margin-top: 1rem; 
+  font-size: smaller;
+}

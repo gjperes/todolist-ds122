@@ -1,6 +1,6 @@
 <?php
-require 'lib/sanitize.php';
-require 'db_credentials.php';
+require 'src/lib/sanitize.php';
+require 'src/db/db_credentials.php';
 
 $conn = mysqli_connect($servername,$username,$password,$dbname);
 if (!$conn) {
@@ -86,26 +86,24 @@ mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-    <title>Lista de tarefas WEB1</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <style media="screen">
-      .alert a:hover{
-        text-decoration: none;
-      }
-      .alert .tarefa {
-        font-size: 1.3em;
-      }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 
-      h3.panel-title{
-        font-weight: bold;
-      }
-    </style>
+    <title>myTasks</title>
+    <meta name="description" content="myTasks - A sua lista de tarefas online!">
+    <link rel="shortcut icon" href="images/journal-check.svg" type="image/x-icon">
+    
+    <!--O estilo criado pelo myTasks original (autor: prof. Alex), PRECISA desses links-->
+    <link rel="stylesheet" href="style/bootstrap.css">
+    <link rel="stylesheet" href="style/index_page.css">
 
+    <!--Assim como dos imports acima, usa as seguintes bibliotecas -->
+    <script src="src/lib/js/jquery-3.2.1.min.js"></script>
+    <script src="src/lib/js/bootstrap.js"></script>
+
+    <!--Script para o alerta confirmando deleção de uma tarefa -->
     <script>
       $(function(){
         $(".btn-remove-tarefa").on("click",function(){
@@ -113,13 +111,17 @@ mysqli_close($conn);
         });
       })
     </script>
+
 </head>
 
 <body>
 <div class="container">
   <div class="row">
     <div class="col-xs-offset-3 col-xs-6">
-      <h1 class="page-header">Lista de tarefas WEB1</h1>
+      <h1 class="page-header">
+        <img class="mb-4" src="images/journal-check.svg" alt="Logo do myTasks" width="48" height="48">
+        myTasks
+      </h1>
 
       <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="POST">
         <div class="form-group">
@@ -185,7 +187,19 @@ mysqli_close($conn);
           <?php if(mysqli_num_rows($tarefas_concluidas_set) > 0): ?>
             <?php while($tarefa = mysqli_fetch_assoc($tarefas_concluidas_set)): ?>
               <!-- INICIO TAREFA CONCLUIDA -->
-                <?php require 'src/tarefa_concluida.php'; ?>
+              <div class="alert alert-success" role="alert">
+                <span class="tarefa">
+                  <span class="glyphicon glyphicon-chevron-right"></span>
+                  <?php echo $tarefa["titulo"] ?>
+                </span>
+                <div class="pull-right">
+                  <a href="<?php echo $_SERVER["PHP_SELF"] . "?id=" . $tarefa["id"] . "&" . "acao=desfeito" ?>">
+                    <button aria-label="Desfazer" class="btn btn-sm btn-warning" type="button">
+                      <span class="glyphicon glyphicon-remove"></span> Desfazer
+                    </button>
+                  </a>
+                </div>
+              </div>
               <!-- FIM TAREFA CONCLUIDA -->
             <?php endwhile; ?>
           <?php else: ?>
@@ -196,5 +210,14 @@ mysqli_close($conn);
     </div>
   </div>
 </div>
+
+<footer class="mt-5 mb-3 text-muted text-center">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-code" viewBox="0 0 16 16">
+    <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+    <path d="M8.646 6.646a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L10.293 9 8.646 7.354a.5.5 0 0 1 0-.708zm-1.292 0a.5.5 0 0 0-.708 0l-2 2a.5.5 0 0 0 0 .708l2 2a.5.5 0 0 0 .708-.708L5.707 9l1.647-1.646a.5.5 0 0 0 0-.708z"/>
+  </svg>
+  Atividade Final DS122 - 2021
+</footer>
+
 </body>
 </html>
