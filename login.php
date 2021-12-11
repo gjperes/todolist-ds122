@@ -17,9 +17,9 @@
     <link rel="stylesheet" href="style/login.css">
 </head>
 
-<body class="text-center">
+<body class="text-center gradient">
 
-  <div class="form-signin">
+  <div id="caixa" class="form-signin">
     <header>
       <img class="mb-4" src="images/person-badge.svg" alt="Imagem de login" width="72" height="56">
       <h1 class="h3 mb-3 fw-normal">
