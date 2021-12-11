@@ -18,7 +18,7 @@
 
 <body class="text-center gradient">
 
-  <div id="form" class="form-signin">
+  <div id="form-checkbox" class="form-signin">
     <!---cabeçalho---->
     <header>
       <h1 class="h2 mb-3 fw-normal">

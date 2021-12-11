@@ -38,7 +38,8 @@ body {
   border-top-right-radius: 0;
 }
 
-#caixa{
+/*-------------- caixa branca do formulario ----------------------*/
+#form-checkbox{
   border-radius: 20px;
   opacity: 0.85;
   padding: 10px;
@@ -52,7 +53,7 @@ body {
   justify-content: center;
   height: 100vh;
   width: 100vw;
-  background: linear-gradient(45deg, #084177, #44795e, #ad7948, #d84930);
+  background: linear-gradient(45deg, #5c97ce, #7dcfa5, #ffc58f, #f57a64);
   background-size: 400% 400%;
   animation: colors 20s ease infinite;
 }
