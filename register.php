@@ -35,78 +35,73 @@
 
     <!-----------registro------------------------------>
     <main>
-      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="form-signin" enctype="multipart/form-data">
+      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="form-signin" enctype="multipart/form-data" id="form-register">
         
+      <!-----------Nome------------->
+      <fieldset class="form-floating">
         
-        <!-----------Nome------------->
-        <fieldset class="form-floating">
+        <input required type="text" class="form-control" id="nome-input" placeholder="Digite o seu nome" value="<?php echo $nome ?>">
+        <label for="nome-input">Nome</label>
+
+        <!--mensagem/alerta de erro da validação front-end-->
+        <div id="erro-nome"></div> 
+
+      </fieldset>
+      <!------Nome termino------------->
+
+      <!-----------email------------->
+      <fieldset class="form-floating">
           
-            <input required type="text" class="form-control" id="nome-input" placeholder="Digite o seu nome">
+        <input required type="email" class="form-control" id="email-input" placeholder="nome@exemplo.com" value="<?php echo $email ?>">
+        <label for="email-input">Email</label>
 
-            <label for="nome-input">Nome</label>
+        <!--mensagem/alerta de erro da validação front-end-->
+        <div id="erro-email"></div> 
 
-            <!--mensagem/alerta de erro da validação front-end-->
-            <div id="erro-nome"></div> 
+      </fieldset>
+      <!------email termino------------->
 
-        </fieldset>
-        <!------Nome termino------------->
+      <!---------password--------------->
+      <fieldset class="form-floating">
 
-        <!-----------email------------->
-        <fieldset class="form-floating">
-          
-            <input required type="email" class="form-control" id="email-input" placeholder="nome@exemplo.com">
+        <input required type="password" class="form-control" id="senha-input" placeholder="Sua senha" value="<?php echo $senha ?>">
+        <label for="senha-input">Senha</label>
 
-            <label for="email-input">Email</label>
+        <!--mensagem/alerta de erro da validação front-end-->
+        <div id="erro-senha"></div>
 
-            <!--mensagem/alerta de erro da validação front-end-->
-            <div id="erro-email"></div> 
+      </fieldset>
+      <!---------password termino-------------->
 
-        </fieldset>
-        <!------email termino------------->
+      <!---------password confirmation(confirme-senha)------>
+      <fieldset class="form-floating">
 
-        <!---------password--------------->
-        <fieldset class="form-floating">
+        <input required type="password" class="form-control" id="confirme-senha-input" placeholder="Confirme a sua senha" value="<?php echo $confirmaSenha ?>">
+        <label for="confirme-senha-input">Confirme a senha</label>
 
-          <input required type="password" class="form-control" id="senha-input" placeholder="Sua senha">
+        <!--mensagem/alerta de erro da validação front-end-->
+        <div id="erro-confirme-senha"></div>
 
-          <label for="senha-input">Senha</label>
+      </fieldset>
+      <!---------password confirmation-------------->
 
-          <!--mensagem/alerta de erro da validação front-end-->
-          <div id="erro-senha"></div>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Criar conta</button>
 
-        </fieldset>
-        <!---------password termino-------------->
-
-        <!---------password confirmation(confirme-senha)------>
-        <fieldset class="form-floating">
-
-          <input required type="password" class="form-control" id="confirme-senha-input" placeholder="Confirme a sua senha">
-
-          <label for="confirme-senha-input">Confirme a senha</label>
-
-          <!--mensagem/alerta de erro da validação front-end-->
-          <div id="erro-confirme-senha"></div>
-
-        </fieldset>
-        <!---------password confirmation-------------->
-
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Criar conta</button>
-
-        <footer class="mt-5 mb-3 text-muted">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-code" viewBox="0 0 16 16">
-            <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
-            <path d="M8.646 6.646a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L10.293 9 8.646 7.354a.5.5 0 0 1 0-.708zm-1.292 0a.5.5 0 0 0-.708 0l-2 2a.5.5 0 0 0 0 .708l2 2a.5.5 0 0 0 .708-.708L5.707 9l1.647-1.646a.5.5 0 0 0 0-.708z"/>
-          </svg>
-          Atividade Final DS122 - 2021
-        </footer>
-
-      </form>
-      <!-----------registro termino------------------------------>
-
+      
+    </form>
+    <!-----------registro termino------------------------------>
+    <footer class="mt-5 mb-3 text-muted">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-code" viewBox="0 0 16 16">
+        <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+        <path d="M8.646 6.646a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L10.293 9 8.646 7.354a.5.5 0 0 1 0-.708zm-1.292 0a.5.5 0 0 0-.708 0l-2 2a.5.5 0 0 0 0 .708l2 2a.5.5 0 0 0 .708-.708L5.707 9l1.647-1.646a.5.5 0 0 0 0-.708z"/>
+      </svg>
+      Atividade Final DS122 - 2021
+    </footer>
+    
     </main>
   </div>
   <!--jQuery e JavaScript !-->
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-  <script src="src/lib/js/login_validation.js"></script>
+  <script src="./src/lib/js/register_validation.js"></script>
 </body>
 </html>
