@@ -44,7 +44,7 @@
         <label for="nome-input">Nome</label>
 
         <!--mensagem/alerta de erro da validação front-end-->
-        <div id="erro-nome"></div> 
+        <div id="erro-nome" class="alerta-erro"></div> 
 
       </fieldset>
       <!------Nome termino------------->
@@ -56,7 +56,7 @@
         <label for="email-input">Email</label>
 
         <!--mensagem/alerta de erro da validação front-end-->
-        <div id="erro-email"></div> 
+        <div id="erro-email" class="alerta-erro"></div> 
 
       </fieldset>
       <!------email termino------------->
@@ -68,7 +68,7 @@
         <label for="senha-input">Senha</label>
 
         <!--mensagem/alerta de erro da validação front-end-->
-        <div id="erro-senha"></div>
+        <div id="erro-senha" class="alerta-erro"></div>
 
       </fieldset>
       <!---------password termino-------------->
@@ -80,7 +80,7 @@
         <label for="confirme-senha-input">Confirme a senha</label>
 
         <!--mensagem/alerta de erro da validação front-end-->
-        <div id="erro-confirme-senha"></div>
+        <div id="erro-confirme-senha" class="alerta-erro"></div>
 
       </fieldset>
       <!---------password confirmation-------------->
