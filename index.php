@@ -114,102 +114,132 @@ mysqli_close($conn);
 
 </head>
 
-<body>
-<div class="container">
-  <div class="row">
-    <div class="col-xs-offset-3 col-xs-6">
-      <h1 class="page-header">
-        <img class="mb-4" src="images/journal-check.svg" alt="Logo do myTasks" width="48" height="48">
-        myTasks
-      </h1>
+<body style="background-color: white;">
+  
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
 
-      <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="POST">
-        <div class="form-group">
-          <label class="sr-only" for="inputTarefa">Inserir nova tarefa</label>
-          <input required type="text" name="nova-tarefa" class="form-control" id="inputTarefa" placeholder="Inserir nova tarefa">
-        </div>
-      </form>
-
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">
-            <span class="glyphicon glyphicon-list"></span>
-            Tarefas pendentes
-          </h3>
-        </div>
-        <div class="panel-body">
-
-          <?php if(mysqli_num_rows($tarefas_pendentes_set) > 0): ?>
-            <?php while($tarefa = mysqli_fetch_assoc($tarefas_pendentes_set)): ?>
-              <!-- INICIO TAREFA PENDENTE  -->
-              <div class="alert alert-info" role="alert">
-                <span class="tarefa">
-                  <span class="glyphicon glyphicon-chevron-right"></span>
-                  <?php echo $tarefa["titulo"] ?>
-                </span>
-                <div class="pull-right">
-                  <a href="<?php echo $_SERVER["PHP_SELF"] . "?id=" . $tarefa["id"] . "&" . "acao=feito" ?>">
-                    <button aria-label="Feito" class="btn btn-sm btn-success" type="button">
-                      <span class="glyphicon glyphicon-ok"></span> Feito!
-                    </button>
-                  </a>
-
-                  <a href="edita_tarefa.php?id=<?php echo $tarefa["id"]; ?>">
-                    <button aria-label="Editar" class="btn btn-sm btn-info" type="button">
-                      <span class="glyphicon glyphicon-edit"></span>
-                    </button>
-                  </a>
-
-                  <a class="btn-remove-tarefa" href="<?php echo $_SERVER["PHP_SELF"] . "?id=" . $tarefa["id"] . "&" . "acao=remover" ?>">
-                    <button aria-label="Remover" class="btn btn-sm btn-danger" type="button">
-                      <span class="glyphicon glyphicon-trash"></span>
-                    </button>
-                  </a>
-
-                </div>
-              </div>
-              <!-- FIM TAREFA PENDENTE -->
-            <?php endwhile; ?>
-          <?php else: ?>
-            Nenhuma tarefa pendente!!!
-          <?php endif; ?>
-        </div>
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Habilitar barra lateral</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Início</a>
       </div>
 
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">
-            <span class="glyphicon glyphicon-ok"></span>
-            Tarefas concluídas
-          </h3>
-        </div>
-        <div class="panel-body">
-          <?php if(mysqli_num_rows($tarefas_concluidas_set) > 0): ?>
-            <?php while($tarefa = mysqli_fetch_assoc($tarefas_concluidas_set)): ?>
-              <!-- INICIO TAREFA CONCLUIDA -->
-              <div class="alert alert-success" role="alert">
-                <span class="tarefa">
-                  <span class="glyphicon glyphicon-chevron-right"></span>
-                  <?php echo $tarefa["titulo"] ?>
-                </span>
-                <div class="pull-right">
-                  <a href="<?php echo $_SERVER["PHP_SELF"] . "?id=" . $tarefa["id"] . "&" . "acao=desfeito" ?>">
-                    <button aria-label="Desfazer" class="btn btn-sm btn-warning" type="button">
-                      <span class="glyphicon glyphicon-remove"></span> Desfazer
-                    </button>
-                  </a>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="<?php ?>">Login<span class="sr-only">(selecionado)</span></a></li>
+        <li><a href="<?php ?>">Cadastre-se</a></li>
+      </ul>
+
+      
+    </div>
+  </nav>
+
+<!-- <?php // if($login): ?> TODO MAIS IMPORTANTE -> Essa parte precisa ser implementada para validar e só permitir o acesso por usuários logados -->
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-offset-3 col-xs-6">
+        <header>
+          <h1 class="page-header">
+            <img class="mb-4" src="images/journal-check.svg" alt="Logo do myTasks" width="48" height="48">
+            myTasks
+          </h1>
+        </header>
+
+        <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="POST">
+          <div class="form-group">
+            <label class="sr-only" for="inputTarefa">Inserir nova tarefa</label>
+            <input required type="text" name="nova-tarefa" class="form-control" id="inputTarefa" placeholder="Inserir nova tarefa">
+          </div>
+        </form>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <span class="glyphicon glyphicon-list"></span>
+              Tarefas pendentes
+            </h3>
+          </div>
+          <div class="panel-body">
+
+            <?php if(mysqli_num_rows($tarefas_pendentes_set) > 0): ?>
+              <?php while($tarefa = mysqli_fetch_assoc($tarefas_pendentes_set)): ?>
+                <!-- INICIO TAREFA PENDENTE  -->
+                <div class="alert alert-info" role="alert">
+                  <span class="tarefa">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <?php echo $tarefa["titulo"] ?>
+                  </span>
+                  <div class="pull-right">
+                    <a href="<?php echo $_SERVER["PHP_SELF"] . "?id=" . $tarefa["id"] . "&" . "acao=feito" ?>">
+                      <button aria-label="Feito" class="btn btn-sm btn-success" type="button">
+                        <span class="glyphicon glyphicon-ok"></span> Feito!
+                      </button>
+                    </a>
+
+                    <a href="edita_tarefa.php?id=<?php echo $tarefa["id"]; ?>">
+                      <button aria-label="Editar" class="btn btn-sm btn-info" type="button">
+                        <span class="glyphicon glyphicon-edit"></span>
+                      </button>
+                    </a>
+
+                    <a class="btn-remove-tarefa" href="<?php echo $_SERVER["PHP_SELF"] . "?id=" . $tarefa["id"] . "&" . "acao=remover" ?>">
+                      <button aria-label="Remover" class="btn btn-sm btn-danger" type="button">
+                        <span class="glyphicon glyphicon-trash"></span>
+                      </button>
+                    </a>
+
+                  </div>
                 </div>
-              </div>
-              <!-- FIM TAREFA CONCLUIDA -->
-            <?php endwhile; ?>
-          <?php else: ?>
-            Nenhuma tarefa concluída! :(
-          <?php endif; ?>
+                <!-- FIM TAREFA PENDENTE -->
+              <?php endwhile; ?>
+            <?php else: ?>
+              Não há nenhuma tarefa pendente
+            <?php endif; ?>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <span class="glyphicon glyphicon-ok"></span>
+              Tarefas concluídas
+            </h3>
+          </div>
+          <div class="panel-body">
+            <?php if(mysqli_num_rows($tarefas_concluidas_set) > 0): ?>
+              <?php while($tarefa = mysqli_fetch_assoc($tarefas_concluidas_set)): ?>
+                <!-- INICIO TAREFA CONCLUIDA -->
+                <div class="alert alert-success" role="alert">
+                  <span class="tarefa">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <?php echo $tarefa["titulo"] ?>
+                  </span>
+                  <div class="pull-right">
+                    <a href="<?php echo $_SERVER["PHP_SELF"] . "?id=" . $tarefa["id"] . "&" . "acao=desfeito" ?>">
+                      <button aria-label="Desfazer" class="btn btn-sm btn-warning" type="button">
+                        <span class="glyphicon glyphicon-remove"></span> Desfazer
+                      </button>
+                    </a>
+                  </div>
+                </div>
+                <!-- FIM TAREFA CONCLUIDA -->
+              <?php endwhile; ?>
+            <?php else: ?>
+              Nenhuma tarefa concluída! :(
+            <?php endif; ?>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+  <!-- <?php //else: ?> Se não estiver logado, faça: -->
+    <!-- Você precisa estar <a href="#">logado</a> para acessar o myTasks! Faça já o seu <a href="#">Cadastro</a> -->
+  <?php //endif; ?>
 
 <footer class="mt-5 mb-3 text-muted text-center">
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-code" viewBox="0 0 16 16">
