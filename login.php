@@ -35,7 +35,7 @@
           <div id="erro-email" class="alerta-erro"></div>            
         </fieldset>
         <fieldset class="form-floating">
-          <input  type="password" class="form-control" id="senha-input" placeholder="Sua senha" value="<?php echo $senha ?>">
+          <input required type="password" class="form-control" id="senha-input" placeholder="Sua senha" value="<?php echo $senha ?>">
           <label for="senha-input">Senha</label>
 
           <!--mensagem/alerta de erro da validação front-end-->
