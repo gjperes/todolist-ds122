@@ -33,13 +33,16 @@ body {
 }
 
 .form-signin input[type="password"] {
-  margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
 
 .alerta-erro {
   color: var(--bs-danger) !important;
+}
+
+button{
+  margin-top: 10px;
 }
 
 /*-------------- caixa branca do formulario ----------------------*/
