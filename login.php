@@ -26,26 +26,20 @@
       </h1>
     </header>
     <main>
-      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="form-signin" enctype="multipart/form-data">
+      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="form-signin" enctype="multipart/form-data" id="form-login">
         <fieldset class="form-floating">
-          <input required type="email" class="form-control" id="email-input" placeholder="nome@exemplo.com">
+          <input required type="email" class="form-control" id="email-input" placeholder="nome@exemplo.com" value="<?php echo $email ?>">
           <label for="email-input">Email</label>
 
           <!--mensagem/alerta de erro da validação front-end-->
-          <div id="erro-email"></div>            
+          <div id="erro-email" class="alerta-erro"></div>            
         </fieldset>
         <fieldset class="form-floating">
-          <input required type="password" class="form-control" id="senha-input" placeholder="Sua senha">
+          <input  type="password" class="form-control" id="senha-input" placeholder="Sua senha" value="<?php echo $senha ?>">
           <label for="senha-input">Senha</label>
 
           <!--mensagem/alerta de erro da validação front-end-->
-          <div id="erro-senha"></div>
-        </fieldset>
-        <fieldset class="checkbox mb-3">
-          <label>
-            <input type="checkbox" value="manter-session">
-            Mantenha-me conectado
-          </label>
+          <div id="erro-senha" class="alerta-erro"></div>
         </fieldset>
         <button class="w-100 btn btn-lg btn-primary" type="submit">Entrar</button>
 
@@ -62,6 +56,6 @@
 
   <!--jQuery e JavaScript !-->
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-  <script src="src/lib/js/login_validation.js"></script>
+  <script src="./src/lib/js/login_validation.js"></script>
 </body>
 </html>

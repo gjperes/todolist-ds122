@@ -38,6 +38,10 @@ body {
   border-top-right-radius: 0;
 }
 
+.alerta-erro {
+  color: var(--bs-danger) !important;
+}
+
 /*-------------- caixa branca do formulario ----------------------*/
 #form-checkbox{
   border-radius: 20px;
