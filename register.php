@@ -15,7 +15,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   
   <!--Bootstrap 5 Sign-in Free Theme-->
-  <link rel="stylesheet" href="style/login.css">
+  <link rel="stylesheet" href="style/login-register.css">
 </head>
 <!-------------------------head termino--------------------------->
 
@@ -86,7 +86,6 @@
       <!---------password confirmation-------------->
 
       <button class="w-100 btn btn-lg btn-primary" type="submit">Criar conta</button>
-
       
     </form>
     <!-----------registro termino------------------------------>

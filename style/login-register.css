@@ -1,0 +1,86 @@
+/* Código sem alterações do tema de Sign-in padrão Bootstrap 5 */
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.alerta-erro {
+  color: var(--bs-danger) !important;
+}
+
+button{
+  margin-top: 10px;
+}
+
+/*-------------- botao de link para pagina register ---------------*/
+
+#criar-conta-botao{
+  margin: 10px 0px 10px 0px;
+}
+
+/*-------------- botao register termino----------------------------*/
+
+/*-------------- caixa branca do formulario ----------------------*/
+#form-checkbox{
+  border-radius: 20px;
+  opacity: 0.85;
+  padding: 10px;
+  background-color: azure;
+}
+
+/*-------------- animação gradiente ----------------------*/
+.gradient {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(45deg, #5c97ce, #7dcfa5, #ffc58f, #f57a64);
+  background-size: 400% 400%;
+  animation: colors 20s ease infinite;
+}
+
+@keyframes colors {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

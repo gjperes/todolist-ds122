@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     
     <!--Bootstrap 5 Sign-in Free Theme-->
-    <link rel="stylesheet" href="style/login.css">
+    <link rel="stylesheet" href="style/login-register.css">
 </head>
 
 <body class="text-center gradient">
@@ -42,6 +42,11 @@
           <div id="erro-senha" class="alerta-erro"></div>
         </fieldset>
         <button class="w-100 btn btn-lg btn-primary" type="submit">Entrar</button>
+
+        <!-----------criar conta------------------------>
+
+        <a href="http://localhost/todolist-ds122-main/register.php"><input id="criar-conta-botao" class="w-100 btn btn-lg btn-primary" type="button" value="Criar conta"></a>
+        <!-----------criar conta termino---------------->
 
       </form>
       <footer class="mt-5 mb-3 text-muted">
