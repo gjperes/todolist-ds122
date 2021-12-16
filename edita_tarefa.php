@@ -2,7 +2,7 @@
 require 'src/lib/sanitize.php';
 require 'src/db/db_credentials.php';
 
-$conn = mysqli_connect($servername,$username,$password,$dbname);
+$conn = mysqli_connect($servername,$username,$db_password,$dbname);
 if (!$conn) {
   die("Problemas ao conectar com o BD!<br>".
        mysqli_connect_error());
@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $id = sanitize($_GET['id']);
     $id = mysqli_real_escape_string($conn, $id);
 
-    $sql = "SELECT id,titulo FROM $table WHERE id = ". $id;
+    $sql = "SELECT id,titulo FROM $tarefas WHERE id = ". $id;
 
     if(!($tarefa = mysqli_query($conn,$sql))){
       die("Problemas para carregar tarefas do BD!<br>".

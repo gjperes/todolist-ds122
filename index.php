@@ -1,11 +1,14 @@
 <?php
 require 'src/lib/sanitize.php';
 require 'src/db/db_credentials.php';
+require 'src/db/autenticacao.php';
 
-$conn = mysqli_connect($servername,$username,$password,$dbname);
+
+
+$conn = mysqli_connect($servername, $username, $db_password, $dbname);
 if (!$conn) {
-  die("Problemas ao conectar com o BD!<br>".
-       mysqli_connect_error());
+  die("Problemas ao conectar com o BD!<br>" .
+    mysqli_connect_error());
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -15,71 +18,66 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $titulo = mysqli_real_escape_string($conn, $titulo);
     $data_criado = date("Y-m-d H:i:s");
 
-    $sql = "INSERT INTO $table (titulo,data_criado)
+    $sql = "INSERT INTO $tarefas (titulo,data_criado)
             VALUES ('$titulo', '$data_criado')";
 
-    if(!mysqli_query($conn,$sql)){
-      die("Problemas para inserir nova tarefa no BD!<br>".
-           mysqli_error($conn));
+    if (!mysqli_query($conn, $sql)) {
+      die("Problemas para inserir nova tarefa no BD!<br>" .
+        mysqli_error($conn));
     }
-  }
-  elseif(isset($_POST["novo-titulo-tarefa"]) && isset($_POST["id"])){
+  } elseif (isset($_POST["novo-titulo-tarefa"]) && isset($_POST["id"])) {
 
     $novo_titulo = sanitize($_POST["novo-titulo-tarefa"]);
     $id = sanitize($_POST["id"]);
 
-    $sql = "UPDATE $table
-            SET titulo='". mysqli_real_escape_string($conn, $novo_titulo) .
-            "' WHERE id=" . mysqli_real_escape_string($conn, $id);
+    $sql = "UPDATE $tarefas
+            SET titulo='" . mysqli_real_escape_string($conn, $novo_titulo) .
+      "' WHERE id=" . mysqli_real_escape_string($conn, $id);
 
-    if(!mysqli_query($conn,$sql)){
-      die("Problemas para executar ação no BD!<br>".
-           mysqli_error($conn));
+    if (!mysqli_query($conn, $sql)) {
+      die("Problemas para executar ação no BD!<br>" .
+        mysqli_error($conn));
     }
   }
-}
-
-elseif ($_SERVER["REQUEST_METHOD"] == "GET") {
+} elseif ($_SERVER["REQUEST_METHOD"] == "GET") {
   if (isset($_GET["acao"]) && isset($_GET["id"])) {
     $sql = "";
 
     $id = sanitize($_GET['id']);
     $id = mysqli_real_escape_string($conn, $id);
 
-    if($_GET["acao"] == "feito"){
-      $sql = "UPDATE $table
+    if ($_GET["acao"] == "feito") {
+      $sql = "UPDATE $tarefas
               SET feito=true
               WHERE id=" . $id;
-    }
-    elseif($_GET["acao"] == "desfeito"){
-      $sql = "UPDATE $table
+    } elseif ($_GET["acao"] == "desfeito") {
+      $sql = "UPDATE $tarefas
               SET feito=false
               WHERE id=" . $id;
-    }
-    elseif($_GET["acao"] == "remover"){
-      $sql = "DELETE FROM $table
+    } elseif ($_GET["acao"] == "remover") {
+      $sql = "DELETE FROM $tarefas
               WHERE id=" . $id;
     }
 
     if ($sql != "") {
-      if(!mysqli_query($conn,$sql)){
-        die("Problemas para executar ação no BD!<br>".
-             mysqli_error($conn));
+      if (!mysqli_query($conn, $sql)) {
+        die("Problemas para executar ação no BD!<br>" .
+          mysqli_error($conn));
       }
     }
   }
 }
 
-$sql = "SELECT id,titulo FROM $table WHERE feito = false";
-if(!($tarefas_pendentes_set = mysqli_query($conn,$sql))){
-  die("Problemas para carregar tarefas do BD!<br>".
-       mysqli_error($conn));
+$sql = "SELECT id,titulo FROM $tarefas WHERE feito = false";
+if (!($tarefas_pendentes_set = mysqli_query($conn, $sql))) {
+  die("Problemas para carregar tarefas do BD!<br>" .
+    mysqli_error($conn));
 }
 
-$sql = "SELECT id,titulo FROM $table WHERE feito = true";
-if(!($tarefas_concluidas_set = mysqli_query($conn,$sql))){
-  die("Problemas para carregar tarefas do BD!<br>".
-       mysqli_error($conn));
+$sql = "SELECT id,titulo FROM $tarefas WHERE feito = true";
+if (!($tarefas_concluidas_set = mysqli_query($conn, $sql))) {
+  die("Problemas para carregar tarefas do BD!<br>" .
+    mysqli_error($conn));
 }
 
 mysqli_close($conn);
@@ -87,35 +85,36 @@ mysqli_close($conn);
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
 
-    <title>myTasks</title>
-    <meta name="description" content="myTasks - A sua lista de tarefas online!">
-    <link rel="shortcut icon" href="images/journal-check.svg" type="image/x-icon">
-    
-    <!--O estilo criado pelo myTasks original (autor: prof. Alex), PRECISA desses links-->
-    <link rel="stylesheet" href="style/bootstrap.css">
-    <link rel="stylesheet" href="style/index_page.css">
+  <title>myTasks</title>
+  <meta name="description" content="myTasks - A sua lista de tarefas online!">
+  <link rel="shortcut icon" href="images/journal-check.svg" type="image/x-icon">
 
-    <!--Assim como dos imports acima, usa as seguintes bibliotecas -->
-    <script src="src/lib/js/jquery-3.2.1.min.js"></script>
-    <script src="src/lib/js/bootstrap.js"></script>
+  <!--O estilo criado pelo myTasks original (autor: prof. Alex), PRECISA desses links-->
+  <link rel="stylesheet" href="style/bootstrap.css">
+  <link rel="stylesheet" href="style/index_page.css">
 
-    <!--Script para o alerta confirmando deleção de uma tarefa -->
-    <script>
-      $(function(){
-        $(".btn-remove-tarefa").on("click",function(){
-          return confirm("Você tem certeza que deseja remover essa tarefa?");
-        });
-      })
-    </script>
+  <!--Assim como dos imports acima, usa as seguintes bibliotecas -->
+  <script src="src/lib/js/jquery-3.2.1.min.js"></script>
+  <script src="src/lib/js/bootstrap.js"></script>
+
+  <!--Script para o alerta confirmando deleção de uma tarefa -->
+  <script>
+    $(function() {
+      $(".btn-remove-tarefa").on("click", function() {
+        return confirm("Você tem certeza que deseja remover essa tarefa?");
+      });
+    })
+  </script>
 
 </head>
 
 <body style="background-color: white;">
-  
+
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
 
@@ -130,16 +129,19 @@ mysqli_close($conn);
       </div>
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="<?php ?>">Login<span class="sr-only">(selecionado)</span></a></li>
-        <li><a href="<?php ?>">Cadastre-se</a></li>
-      </ul>
-
+        <ul class="nav navbar-nav navbar-right">
+          <?php if ($login) : ?>
+            <li class="active"><a href="logout.php">Deslogar<span class="sr-only">(selecionado)</span></a></li>
       
-    </div>
+          <?php endif; ?>
+        </ul>
+
+
+      </div>
   </nav>
 
-<!-- <?php // if($login): ?> TODO MAIS IMPORTANTE -> Essa parte precisa ser implementada para validar e só permitir o acesso por usuários logados -->
+  <!-- <?php // if($login): 
+        ?> TODO MAIS IMPORTANTE -> Essa parte precisa ser implementada para validar e só permitir o acesso por usuários logados -->
   <div class="container">
     <div class="row">
       <div class="col-xs-offset-3 col-xs-6">
@@ -166,8 +168,8 @@ mysqli_close($conn);
           </div>
           <div class="panel-body">
 
-            <?php if(mysqli_num_rows($tarefas_pendentes_set) > 0): ?>
-              <?php while($tarefa = mysqli_fetch_assoc($tarefas_pendentes_set)): ?>
+            <?php if (mysqli_num_rows($tarefas_pendentes_set) > 0) : ?>
+              <?php while ($tarefa = mysqli_fetch_assoc($tarefas_pendentes_set)) : ?>
                 <!-- INICIO TAREFA PENDENTE  -->
                 <div class="alert alert-info" role="alert">
                   <span class="tarefa">
@@ -197,7 +199,7 @@ mysqli_close($conn);
                 </div>
                 <!-- FIM TAREFA PENDENTE -->
               <?php endwhile; ?>
-            <?php else: ?>
+            <?php else : ?>
               Não há nenhuma tarefa pendente
             <?php endif; ?>
           </div>
@@ -211,8 +213,8 @@ mysqli_close($conn);
             </h3>
           </div>
           <div class="panel-body">
-            <?php if(mysqli_num_rows($tarefas_concluidas_set) > 0): ?>
-              <?php while($tarefa = mysqli_fetch_assoc($tarefas_concluidas_set)): ?>
+            <?php if (mysqli_num_rows($tarefas_concluidas_set) > 0) : ?>
+              <?php while ($tarefa = mysqli_fetch_assoc($tarefas_concluidas_set)) : ?>
                 <!-- INICIO TAREFA CONCLUIDA -->
                 <div class="alert alert-success" role="alert">
                   <span class="tarefa">
@@ -229,7 +231,7 @@ mysqli_close($conn);
                 </div>
                 <!-- FIM TAREFA CONCLUIDA -->
               <?php endwhile; ?>
-            <?php else: ?>
+            <?php else : ?>
               Nenhuma tarefa concluída! :(
             <?php endif; ?>
           </div>
@@ -237,17 +239,20 @@ mysqli_close($conn);
       </div>
     </div>
   </div>
-  <!-- <?php //else: ?> Se não estiver logado, faça: -->
-    <!-- Você precisa estar <a href="#">logado</a> para acessar o myTasks! Faça já o seu <a href="#">Cadastro</a> -->
-  <?php //endif; ?>
+  <!-- <?php //else: 
+        ?> Se não estiver logado, faça: -->
+  <!-- Você precisa estar <a href="#">logado</a> para acessar o myTasks! Faça já o seu <a href="#">Cadastro</a> -->
+  <?php //endif; 
+  ?>
 
-<footer class="mt-5 mb-3 text-muted text-center">
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-code" viewBox="0 0 16 16">
-    <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
-    <path d="M8.646 6.646a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L10.293 9 8.646 7.354a.5.5 0 0 1 0-.708zm-1.292 0a.5.5 0 0 0-.708 0l-2 2a.5.5 0 0 0 0 .708l2 2a.5.5 0 0 0 .708-.708L5.707 9l1.647-1.646a.5.5 0 0 0 0-.708z"/>
-  </svg>
-  Atividade Final DS122 - 2021
-</footer>
+  <footer class="mt-5 mb-3 text-muted text-center">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-code" viewBox="0 0 16 16">
+      <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z" />
+      <path d="M8.646 6.646a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L10.293 9 8.646 7.354a.5.5 0 0 1 0-.708zm-1.292 0a.5.5 0 0 0-.708 0l-2 2a.5.5 0 0 0 0 .708l2 2a.5.5 0 0 0 .708-.708L5.707 9l1.647-1.646a.5.5 0 0 0 0-.708z" />
+    </svg>
+    Atividade Final DS122 - 2021
+  </footer>
 
 </body>
+
 </html>

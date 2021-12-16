@@ -2,7 +2,7 @@
 require 'db_credentials.php';
 
 // Create connection
-$conn = mysqli_connect($servername, $username, $password);
+$conn = mysqli_connect($servername, $username, $db_password);
 // Check connection
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
@@ -40,10 +40,12 @@ if (mysqli_query($conn, $sql)) {
 
 // SQL para criar a tabela de dados do usuário
 $sql = "CREATE TABLE $tabela_user (
-            userID INT UNSIGNED PRIMARY KEY,
+            userID INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             nomeUser VARCHAR(50) NOT NULL,
             emailUser VARCHAR(50) NOT NULL,
-            senhaUser VARCHAR(20) NOT NULL
+            senhaUser VARCHAR(40) NOT NULL,
+            CONSTRAINT user_unique UNIQUE (userID),
+            CONSTRAINT emailuser_unique UNIQUE (emailUser)
         )";
 
 if (mysqli_query($conn, $sql)) {
