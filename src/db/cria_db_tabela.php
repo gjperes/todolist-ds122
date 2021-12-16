@@ -24,20 +24,48 @@ if (mysqli_query($conn, $sql)) {
     echo "<br>Error creating database: " . mysqli_error($conn);
 }
 
-// sql to create table
-$sql = "CREATE TABLE $table (
-  id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  titulo VARCHAR(100) NOT NULL,
-  feito BOOLEAN DEFAULT false,
-  data_criado DATETIME NOT NULL,
-  data_feito DATETIME
-)";
+// SQL para criar a tabela de tarefas
+$sql = "CREATE TABLE $tarefas (
+            id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            titulo VARCHAR(100) NOT NULL,
+            feito BOOLEAN DEFAULT false,
+            data_criado DATETIME NOT NULL
+        )";
 
 if (mysqli_query($conn, $sql)) {
-    echo "<br>Database created successfully";
+    echo "<br>Tabela $tarefas criada com sucesso";
 } else {
-    echo "<br>Error creating database: " . mysqli_error($conn);
+    echo "<br>Erro criando tabela: " . mysqli_error($conn);
 }
+
+// SQL para criar a tabela de dados do usuário
+$sql = "CREATE TABLE $tabela_user (
+            userID INT UNSIGNED PRIMARY KEY,
+            nomeUser VARCHAR(50) NOT NULL,
+            emailUser VARCHAR(50) NOT NULL,
+            senhaUser VARCHAR(20) NOT NULL
+        )";
+
+if (mysqli_query($conn, $sql)) {
+    echo "<br>Tabela $tabela_user criada com sucesso";
+} else {
+    echo "<br>Erro criando tabela: " . mysqli_error($conn);
+}
+
+// SQL para criar a tabela de relacionamento entre usuário/tarefas
+$sql = "CREATE TABLE $relacionamento (
+            userID INT UNSIGNED,
+            myTasksID INT UNSIGNED,
+            FOREIGN KEY (userID) REFERENCES $tabela_user(userID),
+            FOREIGN KEY (myTasksID) REFERENCES $tarefas(id)
+        )";
+
+if (mysqli_query($conn, $sql)) {
+    echo "<br>Tabela $relacionamento criada com sucesso";
+} else {
+    echo "<br>Erro criando tabela: " . mysqli_error($conn);
+}
+
 
 mysqli_close($conn);
 

@@ -2,6 +2,9 @@
 $servername = "localhost";
 $username = "root";
 $password = "root";
+
 $dbname = "ds122";
-$table = "MyTasks";
+$tarefas = "MyTasks";
+$tabela_user = "dadosUser";
+$relacionamento = "possui";
 ?>
