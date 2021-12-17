@@ -1,9 +1,9 @@
 <?php
-require 'src/lib/sanitize.php';
+
 require 'src/db/db_credentials.php';
-require 'src/db/autenticacao.php';
 
-
+require 'src/db/forcar_autenticacao.php';
+require 'src/lib/sanitize.php';
 
 $conn = mysqli_connect($servername, $username, $db_password, $dbname);
 if (!$conn) {

@@ -90,14 +90,14 @@ if (!$login && $_SERVER["REQUEST_METHOD"] == "POST") {
 <?php endif; ?>
 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="form-signin" enctype="multipart/form-data" id="form-login">
   <fieldset class="form-floating">
-    <input required type="email" class="form-control" name="email" placeholder="nome@exemplo.com" value="<?php echo $email ?>">
+    <input required type="email" class="form-control" name="email" placeholder="nome@exemplo.com" value="">
     <label for="email">Email</label>
 
     <!--mensagem/alerta de erro da validação front-end-->
     <div id="erro-email" class="alerta-erro"></div>
   </fieldset>
   <fieldset class="form-floating">
-    <input required type="password" class="form-control" name="password" placeholder="Sua senha" value="<?php echo $password ?>">
+    <input required type="password" class="form-control" name="password" placeholder="Sua senha" value="">
     <label for="senha">Senha</label>
 
     <!--mensagem/alerta de erro da validação front-end-->

@@ -91,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-----------Nome------------->
         <fieldset class="form-floating">
 
-          <input required type="text" class="form-control" name="name" placeholder="Digite o seu nome" value="<?php echo $name ?>">
+          <input required type="text" class="form-control" name="name" placeholder="Digite o seu nome" value="">
           <label for="nome-input">Nome</label>
 
           <!--mensagem/alerta de erro da validação front-end-->
@@ -103,7 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-----------email------------->
         <fieldset class="form-floating">
 
-          <input required type="email" class="form-control" name="email" placeholder="nome@exemplo.com" value="<?php echo $email ?>">
+          <input required type="email" class="form-control" name="email" placeholder="nome@exemplo.com" value="">
           <label for="email-input">Email</label>
 
           <!--mensagem/alerta de erro da validação front-end-->
