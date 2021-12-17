@@ -1,4 +1,4 @@
-#  WebApp myTasks
+#  📑 WebApp myTasks
 
 Tecnologia em Análise e Desenvolvimento de Sistemas
 
@@ -8,7 +8,7 @@ Universidade Federal do Paraná - UFPR
 ***
 *DS122 - Desenvolvimento de Aplicações Web 1*
 
-## Introdução
+## ⌨ Introdução
 
 Atividade final para a disciplina de _Desenvolvimento Web I_ - desenvolvimento de uma aplicação CRUD (Create, Read, Update, Delete) com comunicação com banco de dados, sistema de login, cadastro e sessão
 
@@ -16,7 +16,7 @@ Atividade final para a disciplina de _Desenvolvimento Web I_ - desenvolvimento d
 
 > Improtante: Versão Alpha indica o pleno funcionamento das ferramentas essenciais para a conclusão da atividade e obtenção da nota
 
-##  Melhorias futuras
+## 🏗️ Melhorias futuras
 
 Abaixo estão listados requisitos a serem implementados para um melhor funcionamento da aplicação, não implementada na versão inicial por "n" fatores.
 
@@ -24,7 +24,7 @@ Abaixo estão listados requisitos a serem implementados para um melhor funcionam
 - Otimizações de Querys SQL
 - Refatorar o myTasks (opcional)
 
-##  Esquema do Banco de Dados
+## 🗃️ Esquema do Banco de Dados
 
 Modelo lógico do esquema de banco de dados implementado para o projeto.
 
@@ -33,7 +33,7 @@ Modelo lógico do esquema de banco de dados implementado para o projeto.
 
 Adendo: Alguns atributos foram modificados no decorrer da implementação, como o o campo "senhaUser", que passou de um tipo VARCHAR(20) para VARCHAR(30).
 
-## Como executar a aplicação
+## ⚙️ Como executar a aplicação
 
 Para instalar e executar a aplicação no seu localhost, siga os passos abaixo:
 
@@ -44,7 +44,7 @@ Para instalar e executar a aplicação no seu localhost, siga os passos abaixo:
 
 > Atenção: alguns pré-requisitos são necessários, o mais indicado para a reprodução é utilizar a stack LAMP ou XAMPP (Linux, Apache2, MySQL, PHP)
 
-## Principais ferramentas
+## 🛠️ Principais ferramentas
 
 As principais ferramentas utilizadas no desenvolvimento da aplicação foram
 
@@ -59,7 +59,7 @@ As principais ferramentas utilizadas no desenvolvimento da aplicação foram
 ![](https://img.shields.io/badge/Tool-MySQL-informational?style=flat&logo=MySQL&logoColor=white&color=f29111)
 ![](https://img.shields.io/badge/Tool-Git-informational?style=flat&logo=Git&logoColor=white&color=f34f29)
 
-## Colaboradores:
+## 👨‍💻 Colaboradores:
 
 Equipe composta por:
 - Gabriel
