@@ -37,12 +37,12 @@ Adendo: Alguns atributos foram modificados no decorrer da implementação, como 
 
 Para instalar e executar a aplicação no seu localhost, siga os passos abaixo:
 
-1. Altere os dados no arquivo `src/db/db_credentials.php` , usando os dados do seu MySQL/MariaDB
-2. Realize o comando: `git clone` do repositório atual
-3. Acesse o link `http://localhost/todolist-ds122/src/db/cria_db_tabela.php`
-4. A aplicação estará pronta para uso, você pode acessar via: `http://localhost/todolist-ds122/index.php`
+1. Realize o comando: `git clone` do repositório atual na pasta do seu servidor (se replicar o stack LAMP: `/var/www/html/`)
+2. Altere os dados no arquivo `./todolist-ds122/src/db/db_credentials.php` , usando os dados do seu MySQL/MariaDB
+3. Acesse o arquivo que inicializa o banco de dados da aplicação: `http://localhost/todolist-ds122/src/db/cria_db_tabela.php` no seu navegador
+4. A aplicação estará pronta para uso via site, hospedado em localhost, pelo link: `http://localhost/todolist-ds122/index.php`
 
-> Atenção: alguns pré-requisitos são necessários, o mais indicado para a reprodução é utilizar a stack LAMP ou XAMPP (Linux, Apache2, MySQL, PHP)
+> Atenção: alguns pré-requisitos são necessários, e o mais indicado para a reprodução é utilizar o stack LAMP ou XAMPP (Linux, Apache2, MySQL, PHP)
 
 ## 🛠️ Principais ferramentas
 
@@ -66,4 +66,4 @@ Equipe composta por:
 - Izael
 - Rafael 
 
-Orientação pelo Prof. Alexander Robert Kutzke
+Orientados pelo Prof. Alexander Robert Kutzke
